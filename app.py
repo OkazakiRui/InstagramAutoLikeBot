@@ -22,8 +22,8 @@ def login():
     f.write("instagramにアクセスしました\n")
     f.close()
     time.sleep(1)
-    username = "asahanemutaiyo"
-    password = "Rui200226"
+    username = ""
+    password = ""
     driver.find_element_by_name('username').send_keys(username)
     time.sleep(1)
     driver.find_element_by_name('password').send_keys(password)
