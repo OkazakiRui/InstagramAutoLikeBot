@@ -47,7 +47,6 @@ def start():
         return
 
     print('ユーザーネーム：%s' % username)
-    print('パスワード：%s' % password)
     print('最大いいね回数：%d回' % nice_num)
     print('いいね間隔：%d秒' % interval)
     print(taglist)
@@ -72,7 +71,7 @@ if __name__ == '__main__':
 
     # 座標
     FORM_X = 20
-    FORM_Y = 20
+    FORM_Y = 38
     PARAM_X = 20
     PARAM_Y = 100
     START_X = 20
@@ -83,11 +82,11 @@ if __name__ == '__main__':
     # ログイン
     loginId_lbl = tkinter.Label(text='Login Id')
     loginId_lbl.place(x=FORM_X, y=FORM_Y)
-    loginId_txt = tkinter.Entry(width=10)
+    loginId_txt = tkinter.Entry(width=13)
     loginId_txt.place(x=FORM_X+100, y=FORM_Y)
     password_lbl = tkinter.Label(text='Password')
     password_lbl.place(x=FORM_X, y=FORM_Y+30)
-    password_txt = tkinter.Entry(width=10)
+    password_txt = tkinter.Entry(width=13, show='*')
     password_txt.place(x=FORM_X+100, y=FORM_Y+30)
 
     # パラメータ項目
