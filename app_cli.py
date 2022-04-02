@@ -6,18 +6,19 @@ import time
 import random
 
 # IDとパスワード
-username = ""
-password = ""
+username = "taisei3040"
+password = "Rui200226"
 # いいねの回数 (nice_num * taglist.length)
-nice_num = 3
+nice_num = 1000
 # ランダムにしたい場合は
 # nice_num = random.randint(最小値, 最大値)
-taglist = ['いいねした人全員フォローする', 'fff']
+# taglist = ['過去pic']
+# taglist = ['フォロー大歓迎']
+# taglist = ['美男美女と繋がりたい']
+taglist = ['雰囲気好きな人いいね']
 
 def randomDelay():
-    time.sleep(random.randint(2, 5))
-    time.sleep(1)
-
+    time.sleep(random.randint(1, 5))
 
 def login():
     # login page
@@ -39,6 +40,9 @@ def tagsearch(tag):
     randomDelay()
 
 def clicknice(nice_num):
+    randomDelay()
+    driver.execute_script("window.scrollTo(0, 600);")
+    randomDelay()
     # 最初の9枚は人気のある投稿のためスキップ
     target = driver.find_elements_by_class_name('_9AhH0')[10]
     actions = ActionChains(driver)
@@ -54,22 +58,24 @@ def clicknice(nice_num):
 
     for i in range(nice_num-1):
         # 次の投稿へ移動
-        driver.find_elements_by_class_name('wpO6b')[2].click()
+        driver.find_element_by_css_selector('.l8mY4 .wpO6b').click()
+        randomDelay()
         time.sleep(1)
-        
+
         # いいねを押す
         driver.find_element_by_class_name('fr66n').click()
-        time.sleep(1)
+        randomDelay()
 
 if __name__ == '__main__':
     driver = webdriver.Chrome("./chromedriver")
     time.sleep(1)
     login()
+    randomDelay()
 
     # ↓タグリストをランダムで回す
     # tagsearch(random.choice(taglist))
     for tag in taglist:
         tagsearch(tag)
-        pushnice(nice_num)
+        clicknice(nice_num)
 
     driver.quit()
